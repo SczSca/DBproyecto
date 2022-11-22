@@ -1,10 +1,44 @@
 <head>
-  <meta charset="utf-8"/>
+  <title>Bootstrap Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
   <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-<script>
-</script>
 </head>
 <body>
+  <nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#">DB</a>
+    </div>
+    <ul class="nav navbar-nav">
+      
+      <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Acciones <span class="caret"></span></a>
+        <ul class="dropdown-menu">
+          <li><a href="#">Crear</a></li>
+          <li><a href="#">Borrar</a></li>
+          <li><a href="#">Actualizar</a></li>
+        </ul>
+      </li>
+      <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Tablas <span class="caret"></span></a>
+        <ul class="dropdown-menu">
+          <li><a href="#">Zoo</a></li>
+          <li><a href="#">Motos</a></li>
+        </ul>
+      </li>
+    </ul>
+    <ul class="nav navbar-nav navbar-right">
+      <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> LogOut</a></li>
+    </ul>
+  </div>
+</nav>
+  
+<div class="container">
+
+</div>
+
   <div class="w3-container" style ="padding: 0">    
   <div class="w3-container w3-blue">
     <h2>Listado de registros de la agenda</h2>
