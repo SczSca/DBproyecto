@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="utf-8"/>
-  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
+<link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-beta.2/css/bootstrap.css'><link rel="stylesheet" href="./style.css">
 <script src="js/script.js">
   
 </script>
@@ -16,22 +16,38 @@
 </style>
 </head>
 <body>
-<div class="container-fluid">
-  <div class="w3-container w3-blue">
-    <h2>Validación de formas con JavaScript</h2>
-  </div> <br>
-<form name="insert" class="w3-container" action="phpagenda1.php" onsubmit="return validateForm(2)" method="post">
-  Nombre: <input class="w3-input" type="text" name="nombre">
-  <br>
-  Descripción: <input class="w3-input" type="text" name="descripcion" style="padding-bottom:50px ;">
-  <br>
-  Cantidad: <input class="w3-input" type="number" name="cantidad">
-  <br>
-  Precio: <input class="w3-input" type="number" name="precio">
-  <br>
-  <input class="w3-button w3-black" type="submit" value="Enviar">
-  <a class="w3-button w3-black" href="phpagenda1.php">Ir a base</a>
-</form>
-</div>
+  <div class="container mt-5">
+    <div class="row">
+      <div class="col-md-5 d-flex align-items-center">
+        <h1>Sliding labels for Bootstrap forms</h1>
+      </div>
+      <div class="col-md-6 offset-md-1">
+        <form class="mt-4 mt-md-0">
+          <div class="form-group">
+            <label for="name">Nombre</label>
+            <input class="form-control" type="text" name="nombre"/>
+          </div>
+          <div class="form-group">
+            <label for="surname">Descripcion</label>
+            <input class="form-control" type="text" name="descripcion"/>
+          </div>
+          <div class="form-group">
+            <label for="email">Cantidad</label>
+            <input class="form-control" type="text" name="cantidad"/>
+          </div>
+          <div class="form-group">
+            <label for="email">Precio</label>
+            <input class="form-control" type="text" name="precio"/>
+          </div>
+          <input class="form-control" type="submit" value="Enviar">
+  <a class="form-group" href="phpagenda1.php">Ir a base</a>
+        </form>
+      </div>
+    </div>
+  </div>
+
+<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0/js/bootstrap.min.js'></script><script  src="./script.js"></script>
+
 </body>
 </html>
