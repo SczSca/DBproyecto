@@ -32,8 +32,8 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
       
       <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Tablas <span class="caret"></span></a>
         <ul class="dropdown-menu">
-          <li><a  href = "phpagenda1 - copia.php"id="1" value="1">Zoo</a></li>
-          <li><a href="phpagenda1 - copia.php" id="2" value="2">Motos</a></li>
+          <li><a  href = "table.php"id="1" value="1">Zoo</a></li>
+          <li><a href="table.php" id="2" value="2">Motos</a></li>
         </ul>
       </li>
     </ul>
