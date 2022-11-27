@@ -78,7 +78,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
             // Attempt to execute the prepared statement
             if(mysqli_stmt_execute($stmt)){
                 // Redirect to login page
-                header("location: login.php");
+                header("location: login2.php");
             } else{
                 echo "Algo salió mal, por favor inténtalo de nuevo.";
             }
@@ -124,23 +124,23 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 
             <div class="col-lg-12 login-form">
                 <div class="col-lg-12 login-form">
-                    <form name="login" class="w3-container" action="phpagenda1.php" onsubmit="return validateForm(1)" method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
-                        <div class="form-group" <?php echo (!empty($username_err)) ? 'has-error' : ''; ?>">
+                    <form  class="w3-container" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
+                        <div class="form-group" <?php echo (!empty($username_err)) ? 'has-error' : ''; ?>>
                             <label class="form-control-label">USERNAME</label>
                             <input type="text" class="form-control" name="username" value="<?php echo $username; ?>">
                             <span class="help-block"><?php echo $username_err; ?></span>
                         </div>
-                        <div class="form-group" <?php echo (!empty($password_err)) ? 'has-error' : ''; ?>">
+                        <div class="form-group" <?php echo (!empty($password_err)) ? 'has-error' : ''; ?>>
                             <label class="form-control-label">PASSWORD</label>
                             <input type="password" class="form-control" name="password" value="<?php echo $password; ?>">
                             <span class="help-block"><?php echo $password_err; ?></span>
                         </div>
-                        <div class="form-group" <?php echo (!empty($confirm_password_err)) ? 'has-error' : ''; ?>">
+                        <div class="form-group" <?php echo (!empty($confirm_password_err)) ? 'has-error' : ''; ?>>
                             <label class="form-control-label" >CONFIRM PASSWORD</label>
-                            <input type="password" class="form-control" name="password" value="<?php echo $confirm_password; ?>">
+                            <input type="password" class="form-control" name="confirm_password" value="<?php echo $confirm_password; ?>">
                             <span class="help-block"><?php echo $confirm_password_err; ?></span>
                         </div>
-                        <div class="form-control-label">YA TIENES CUENTA?  <a href="login.php">Ingresa aquí</a></p></div>
+                        <div class="form-control-label">YA TIENES CUENTA?  <a href="login2.php">Ingresa aquí</a></p></div>
                         <div class="col-lg-12 loginbttm">
                             <div class="col-lg-6 login-btm login-text">
                                 <!-- Error Message -->
