@@ -26,14 +26,14 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
 <nav class="navbar navbar-inverse">
   <div class="container-fluid">
     <div class="navbar-header">
-      <a class="navbar-brand" href="#">DB</a>
+      <label class="navbar-brand">DB</label>
     </div>
     <ul class="nav navbar-nav">
       
-      <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Tablas <span class="caret"></span></a>
+      <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" >Tablas <span class="caret"></span></a>
         <ul class="dropdown-menu">
-          <li><a  href = "table.php"id="1" value="1">Zoo</a></li>
-          <li><a href="table.php" id="2" value="2">Motos</a></li>
+          <li><a  href = "centro.php">Centro</a></li>
+          <li><a href="sala.php">Sala</a></li>
         </ul>
       </li>
     </ul>
