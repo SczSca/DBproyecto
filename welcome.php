@@ -30,7 +30,7 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
     </div>
     <ul class="nav navbar-nav">
       
-      <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" >Tablas <span class="caret"></span></a>
+      <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#" >Tablas <span class="caret"></span></a>
         <ul class="dropdown-menu">
           <li><a  href = "centro.php">Centro</a></li>
           <li><a href="sala.php">Sala</a></li>
