@@ -140,7 +140,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                             <input type="password" class="form-control" name="confirm_password" value="<?php echo $confirm_password; ?>">
                             <span class="help-block"><?php echo $confirm_password_err; ?></span>
                         </div>
-                        <div class="form-control-label">YA TIENES CUENTA?  <a href="login2.php">Ingresa aquí</a></p></div>
+                        <div class="form-control-label">YA TIENES CUENTA?  <a href="login.php">Ingresa aquí</a></p></div>
                         <div class="col-lg-12 loginbttm">
                             <div class="col-lg-6 login-btm login-text">
                                 <!-- Error Message -->
