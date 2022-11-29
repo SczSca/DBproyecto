@@ -19,7 +19,7 @@
       <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Acciones <span class="caret"></span></a>
         <ul class="dropdown-menu">
           <li><a href="altaSala.html">Crear</a></li>
-          <li><a href="#">Actualizar</a></li>
+          <li><a href="upSala.html">Actualizar</a></li>
         </ul>
       </li>
       <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Tablas <span class="caret"></span></a>
