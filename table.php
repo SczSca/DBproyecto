@@ -1,5 +1,5 @@
 <head>
-  <title>Bootstrap Example</title>
+  <title>Menu</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
@@ -14,18 +14,10 @@
       <a class="navbar-brand" href="welcome.php">DB</a>
     </div>
     <ul class="nav navbar-nav">
-      
-      <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Acciones <span class="caret"></span></a>
-        <ul class="dropdown-menu">
-          <li><a href="agenda1.php">Crear</a></li>
-          <li><a href="#">Borrar</a></li>
-          <li><a href="#">Actualizar</a></li>
-        </ul>
-      </li>
       <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Tablas <span class="caret"></span></a>
         <ul class="dropdown-menu">
-          <li><a href="#">Zoo</a></li>
-          <li><a href="#">Motos</a></li>
+          <li><a href="sala.php">Zoo</a></li>
+          <li><a href="centro.php">Motos</a></li>
         </ul>
       </li>
     </ul>
