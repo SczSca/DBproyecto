@@ -49,6 +49,7 @@
     <input class="w3-button w3-black" type="submit" value="Enviar">
   </form>
   <?php
+  require_once "config.php";
   if($_SERVER["REQUEST_METHOD"] === "POST"){
 
     if(!empty($_POST["rowNum"]) || !empty($_POST["searchText"])){
@@ -69,7 +70,6 @@
   ?>
   <?php
 
-    require_once "config.php";
     if(!empty($_POST["idEdit"])){
       $idEdit = $_POST["idEdit"];
 
@@ -104,8 +104,6 @@
   ?>
 
 
-<br>
-  <a class="w3-button w3-black" href="agendaEdit.html">Editar</a> <br>
   <br>
   <div class="w3-container w3-blue">
     <h2>Borrar en base a id</h2>
@@ -121,8 +119,8 @@
     <h2>Registros de Sala</h2>
   </div>
   <?php
-    if(isset($_POST["Enviar"])){
-      addCentro($link);
+    if(isset($_POST["insertBtnSala"])){
+      addSala($link);
 
     }
     else if(isset($_POST["Borrar"])){
@@ -141,14 +139,13 @@
       <?php
       } else {
         echo '<div class="w3-panel w3-red">'.
-        "<h3>Error222: " . $sql . "<br>" . $link->error.
+        "<h3>Error222: " . $sql . "<br>" . $conn->error.
         "</h3></div>";          
       }
     }
   //Listar los registros que tiene la tabla persona de la base de datos tercera
-  $sql = "SELECT * FROM agenda";
-  $result = $link->query($sql);
-  printRows($result);
+
+  printRows($link);
 
   ?>
   <script>
@@ -177,28 +174,29 @@
   </script>
   <?php
     //cerrar la conexión
-    function printRows($resultQuery){
-      //if idx == 1 echo tabla1 else
+    function printRows($link){
+      $sql = "SELECT * FROM sala";
+      $resultQuery = $link->query($sql);
       if ($resultQuery->num_rows > 0) {
         // output data of each row
         echo '<ul class="w3-ul w3-hoverable">';
         while($row = $resultQuery->fetch_assoc()) {
           echo "<li>";  
-          echo "id: " . $row["id"]. ", Nombre: " . $row["nombre"].
-          ",Descripción: " . $row["descripcion"].
-          ", Cantidad: " . $row["cantidad"].", precio: " . $row["precio"];
+          echo "Nombre: " . $row["Nombre"].
+          " | Tipo: " . $row["Tipo"].
+          " | Descripcion: " . $row["Descripcion"]." | idCentro: " . $row["fkCentro"];
       }
       echo "</ul>";
       } else {
         echo "No hay registros";
       }
     }
-    function addCentro($conn){
-      $nombre=$_POST["nombre"];
-      $descripcion=$_POST["descripcion"];
-      $cantidad=$_POST["cantidad"];
-      $precio=$_POST["precio"];
-      $sql = "CALL addAgenda('{$nombre}','{$descripcion}','{$cantidad}','{$precio}')";
+    function addSala($conn){
+      $nombre=$_POST["Nombre"];
+      $tipo=$_POST["Tipo"];
+      $descripcion=$_POST["Descripcion"];
+      $idCentro=$_POST["IdCentro"];
+      $sql = "CALL addValues(2,'{$nombre}','{$tipo}','{$descripcion}','{$idCentro}')";
       $result = $conn->query($sql);
       if ($result !== TRUE){
         echo '<div class="w3-panel w3-red">'.

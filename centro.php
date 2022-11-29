@@ -8,7 +8,7 @@
   <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 </head>
 <body>
-  <nav class="navbar navbar-inverse" style="margin: 0">
+<nav class="navbar navbar-inverse" style="margin: 0">
   <div class="container-fluid">
     <div class="navbar-header">
       <a class="navbar-brand" href="welcome.php">DB</a>
@@ -49,23 +49,23 @@
     <input class="w3-button w3-black" type="submit" value="Enviar">
   </form>
   <?php
-  if($_SERVER["REQUEST_METHOD"] === "POST"){
+  // if($_SERVER["REQUEST_METHOD"] === "POST"){
 
-    if(!empty($_POST["rowNum"]) || !empty($_POST["searchText"])){
-      if(!empty($_POST["rowNum"])){
-        $rowNum = $_POST["rowNum"] - 1;
-        $sql = "SELECT * FROM agenda LIMIT {$rowNum},1";
-        $result = $link->query($sql);
-        printRows($result);
+  //   if(!empty($_POST["rowNum"]) || !empty($_POST["searchText"])){
+  //     if(!empty($_POST["rowNum"])){
+  //       $rowNum = $_POST["rowNum"] - 1;
+  //       $sql = "SELECT * FROM agenda LIMIT {$rowNum},1";
+  //       $result = $link->query($sql);
+  //       printRows($result);
         
-      }else{
-        $searchText = $_POST["searchText"];
-        $sql = "SELECT * FROM agenda WHERE nombre LIKE '%{$searchText}%' OR descripcion LIKE '%{$searchText}%'";
-        $result = $link->query($sql);
-        printRows($result);
-      }
-    }
-  }
+  //     }else{
+  //       $searchText = $_POST["searchText"];
+  //       $sql = "SELECT * FROM agenda WHERE nombre LIKE '%{$searchText}%' OR descripcion LIKE '%{$searchText}%'";
+  //       $result = $link->query($sql);
+  //       printRows($result);
+  //     }
+  //   }
+  // }
   ?>
   <?php
 
@@ -103,9 +103,6 @@
     }
   ?>
 
-
-<br>
-  <a class="w3-button w3-black" href="agendaEdit.html">Editar</a> <br>
   <br>
   <div class="w3-container w3-blue">
     <h2>Borrar en base a id</h2>
@@ -121,7 +118,7 @@
     <h2>Listado de registros de la agenda</h2>
   </div>
   <?php
-    if(isset($_POST["insertCentro"])){
+    if(isset($_POST["insertBtnCentro"])){
       addCentro($link);
 
     }
@@ -141,14 +138,12 @@
       <?php
       } else {
         echo '<div class="w3-panel w3-red">'.
-        "<h3>Error222: " . $sql . "<br>" . $link->error.
+        "<h3>Error222: " . $sql . "<br>" . $conn->error.
         "</h3></div>";          
       }
     }
   //Listar los registros que tiene la tabla persona de la base de datos tercera
-  $sql = "SELECT * FROM agenda";
-  $result = $link->query($sql);
-  printRows($result);
+  printRows($link);
 
   ?>
   <script>
@@ -176,17 +171,17 @@
 
   </script>
   <?php
-    //cerrar la conexión
-    function printRows($resultQuery){
-      //if idx == 1 echo tabla1 else
+    function printRows($link){
+      $sql = "SELECT * FROM centro";
+      $resultQuery = $link->query($sql);
       if ($resultQuery->num_rows > 0) {
         // output data of each row
         echo '<ul class="w3-ul w3-hoverable">';
         while($row = $resultQuery->fetch_assoc()) {
           echo "<li>";  
-          echo "id: " . $row["id"]. ", Nombre: " . $row["nombre"].
-          ",Descripción: " . $row["descripcion"].
-          ", Cantidad: " . $row["cantidad"].", precio: " . $row["precio"];
+          echo "Nombre: " . $row["Nombre"].
+          "         | Telefono: " . $row["Telefono"].
+          "         | Direccion: " . $row["Direccion"]." | Email: " . $row["Email"];
       }
       echo "</ul>";
       } else {
@@ -194,11 +189,11 @@
       }
     }
     function addCentro($conn){
-      $nombre=$_POST["nombre"];
-      $descripcion=$_POST["descripcion"];
-      $cantidad=$_POST["cantidad"];
-      $precio=$_POST["precio"];
-      $sql = "CALL addAgenda('{$nombre}','{$descripcion}','{$cantidad}','{$precio}')";
+      $nombre=$_POST["Nombre"];
+      $telefono=$_POST["Telefono"];
+      $direccion=$_POST["Direccion"];
+      $email=$_POST["Email"];
+      $sql = "CALL addValues(1,'{$nombre}','{$telefono}','{$direccion}','{$email}')";
       $result = $conn->query($sql);
       if ($result !== TRUE){
         echo '<div class="w3-panel w3-red">'.
