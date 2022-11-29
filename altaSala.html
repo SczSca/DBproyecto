@@ -19,42 +19,42 @@
 </head>
 
 <body>
-<nav class="navbar navbar-inverse">
-  <div class="container-fluid">
-    <div class="navbar-header">
-      <a class="navbar-brand" href="welcome.php">DB</a>
-      <label class="navbar-brand">Sala</label>
+  <nav class="navbar navbar-inverse">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <a class="navbar-brand" href="welcome.php">DB</a>
+        <a class="navbar-brand" href="sala.php">Sala</label>
+      </div>
+      <ul class="nav navbar-nav">
+        
+        <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Acciones <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="upSala.html">Actualizar</a></li>
+          </ul>
+        </li>
+        <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Tablas <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="centro.php">Centro</a></li>
+          </ul>
+        </li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="logout.php"><span class="glyphicon glyphicon-log-in"></span> LogOut</a></li>
+      </ul>
     </div>
-    <ul class="nav navbar-nav">
-      
-      <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Acciones <span class="caret"></span></a>
-        <ul class="dropdown-menu">
-          <li><a href="upSala.html">Actualizar</a></li>
-        </ul>
-      </li>
-      <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Tablas <span class="caret"></span></a>
-        <ul class="dropdown-menu">
-          <li><a href="centro.php">Centro</a></li>
-        </ul>
-      </li>
-    </ul>
-    <ul class="nav navbar-nav navbar-right">
-      <li><a href="logout.php"><span class="glyphicon glyphicon-log-in"></span> LogOut</a></li>
-    </ul>
-  </div>
-</nav>
+  </nav>
 <div class="container-fluid">
   <div class="w3-container w3-blue">
-    <h2>Alta de Registros</h2>
+    <h2>Alta Registros de Sala</h2>
   </div> <br>
-<form name="insertSala" class="w3-container"  onsubmit="return validateForm(4)" method="post">
+<form name="insertSala" class="w3-container" action="sala.php"  onsubmit="return validateForm(3)" method="post">
   Nombre: <input class="w3-input" type="text" name="Nombre">
   <br>
   Tipo: <input class="w3-input" type="text" name="Tipo">
   <br>
   Descripción: <input class="w3-input" type="text" name="Descripcion" style="padding-bottom:50px ;">
   <br>
-  idCentro: <input class="w3-input" type="number" name="IdCentro">
+  Centro donde se encuentra: <input class="w3-input" type="text" name="IdCentro">
   <br>
   <input class="w3-button w3-black" type="submit" name="insertBtnSala" value="Enviar">
 
