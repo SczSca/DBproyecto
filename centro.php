@@ -8,111 +8,57 @@
   <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 </head>
 <body>
-<nav class="navbar navbar-inverse" style="margin: 0">
-  <div class="container-fluid">
-    <div class="navbar-header">
-      <a class="navbar-brand" href="welcome.php">DB</a>
-      <label class="navbar-brand">Centro</label>
+  <nav class="navbar navbar-inverse" style="margin: 0">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <a class="navbar-brand" href="welcome.php">DB</a>
+        <label class="navbar-brand">Centro</label>
+      </div>
+      <ul class="nav navbar-nav">
+        
+        <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Acciones <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="altaCentro.html">Crear</a></li>
+            <li><a href="upCentro.html">Actualizar</a></li>
+          </ul>
+        </li>
+        <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Tablas <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="sala.php">Sala</a></li>
+          </ul>
+        </li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="logout.php"><span class="glyphicon glyphicon-log-in"></span> LogOut</a></li>
+      </ul>
     </div>
-    <ul class="nav navbar-nav">
-      
-      <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Acciones <span class="caret"></span></a>
-        <ul class="dropdown-menu">
-          <li><a href="altaCentro.html">Crear</a></li>
-          <li><a href="upCentro.html">Actualizar</a></li>
-        </ul>
-      </li>
-      <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Tablas <span class="caret"></span></a>
-        <ul class="dropdown-menu">
-          <li><a href="sala.php">Sala</a></li>
-        </ul>
-      </li>
-    </ul>
-    <ul class="nav navbar-nav navbar-right">
-      <li><a href="logout.php"><span class="glyphicon glyphicon-log-in"></span> LogOut</a></li>
-    </ul>
-  </div>
-</nav>
-  
-<div class="container">
+  </nav>
+    
+  <div class="container">
 
-</div>
+  </div>
 
   <div class="w3-container w3-blue">
     <h2>Buscar Registro</h2>
   </div>
   <form name="search" class="w3-container" action="<?php $_SERVER['PHP_SELF'];?>" onsubmit="return validateForm(2)" method="post">
-    <br> numero de registro: <input class="w3-input" type="text" name="rowNum"> <br>
-    texto de busqueda: <input class="w3-input" type="text" name="searchText">
+    texto de busqueda: <input class="w3-input" type="text" name="searchTextCentro">
     <br>
-    <label for="">INTRODUCIR SOLO UNO</label>
     <input class="w3-button w3-black" type="submit" value="Enviar">
   </form>
   <?php
-  // if($_SERVER["REQUEST_METHOD"] === "POST"){
+  require_once "config.php";
+  if($_SERVER["REQUEST_METHOD"] === "POST"){
 
-  //   if(!empty($_POST["rowNum"]) || !empty($_POST["searchText"])){
-  //     if(!empty($_POST["rowNum"])){
-  //       $rowNum = $_POST["rowNum"] - 1;
-  //       $sql = "SELECT * FROM agenda LIMIT {$rowNum},1";
-  //       $result = $link->query($sql);
-  //       printRows($result);
-        
-  //     }else{
-  //       $searchText = $_POST["searchText"];
-  //       $sql = "SELECT * FROM agenda WHERE nombre LIKE '%{$searchText}%' OR descripcion LIKE '%{$searchText}%'";
-  //       $result = $link->query($sql);
-  //       printRows($result);
-  //     }
-  //   }
-  // }
-  ?>
-  <?php
-
-    require_once "config.php";
-    if(!empty($_POST["idEdit"])){
-      $idEdit = $_POST["idEdit"];
-
-      if(!empty($_POST["nombreEdit"])){
-        $nombreEdit = $_POST["nombreEdit"];
-        $sql = "UPDATE agenda SET nombre = '{$nombreEdit}' WHERE id = {$idEdit}";
-        $conn ->query($sql);
-      }
-      if(!empty($_POST["descripcionEdit"])) {
-        $descripcionEdit = $_POST["descripcionEdit"];
-        $sql ="UPDATE agenda SET descripcion = '{$descripcionEdit}' WHERE id = {$idEdit}";
-        $conn ->query($sql);
-      }
-      if(!empty($_POST["cantidadEdit"])){
-        $cantidadEdit = $_POST["cantidadEdit"];
-        $sql = "UPDATE agenda SET cantidad = {$cantidadEdit} WHERE id = {$idEdit}";
-        $conn->query($sql);
-      }
-      if(!empty($_POST["precioEdit"])){
-        $precioEdit = $_POST["precioEdit"];
-        $sql = "UPDATE agenda SET precio = {$precioEdit} WHERE id = {$idEdit}";
-        $conn ->query($sql);
-      }
-      ?>
-      <div class="w3-panel w3-green">
-      <?php
-          echo "<h3>Registro actualizado con exito</h3>";  
-      ?>
-      </div>
-      <?php
+    if(!empty($_POST["searchTextCentro"])){     
+      $searchText = $_POST["searchTextCentro"];
+      printSearch($link,$searchText);      
     }
+  }
   ?>
+  
 
   <br>
-  <div class="w3-container w3-blue">
-    <h2>Borrar en base a id</h2>
-  </div>
-
-  <form name="delete" class="w3-container" action="centro.php" onsubmit="return validateForm(1)" method="post">
-    <br> id: <input class="w3-input" type="text" name="id">
-    <br>
-    <input class="w3-button w3-black" type="submit" name="deleteCentro" value="Enviar">
-  </form>
   <div class="w3-container" style ="padding: 0">    
   <div class="w3-container w3-blue">
     <h2>Listado de registros de la agenda</h2>
@@ -122,28 +68,65 @@
       addCentro($link);
 
     }
-    else if(isset($_POST["deleteCentro"])){
-
-      $id=$_POST["id"]; //change this to make it work in a <select><option>
-      //DO A STORED PROCEDURE THAT DOES THIS
-      $sql = "DELETE FROM agenda WHERE id ='{$id}'";
-      $result = $link->query($sql);
-      if($result === TRUE){
-        ?>
-        <div class="w3-panel w3-red">
-        <?php
-            echo "<h3>Registro borrado con exito</h3>";  
-        ?>
-        </div>
-      <?php
-      } else {
-        echo '<div class="w3-panel w3-red">'.
-        "<h3>Error222: " . $sql . "<br>" . $conn->error.
-        "</h3></div>";          
+    else if(isset($_POST["DeleteBtnCentro"])){
+      deleteSelected($link);
+    }
+    else if(isset($_POST["EditBtnCentro"])){
+      session_start();
+      $_SESSION["idCentro"] = $_POST["searchDrop"];
+      header("location: upCentro.html");
+    }
+    else if(isset($_POST["UpdateBtnCentro"])){
+      session_start();
+      if(isset($_SESSION["idCentro"])){
+        $idEdit = $_SESSION["idCentro"];
+        if(!empty($_POST["Nombre"])){
+          $nombreEdit = $_POST["Nombre"];
+          $sql = "UPDATE centro SET Nombre = '{$nombreEdit}' WHERE idCentro = {$idEdit}";
+          $result = $link ->query($sql);
+          if ($result !== TRUE){
+            echo '<div class="w3-panel w3-red">'.
+            "<h3>Error: ". $sql . "<br>" . $link->error.
+            "</h3></div>";
+          }
+        }
+        if(!empty($_POST["Telefono"])) {
+          $telefonoEdit = $_POST["Telefono"];
+          $sql ="UPDATE centro SET Telefono = '{$telefonoEdit}' WHERE idCentro = {$idEdit}";
+          $result = $link ->query($sql);
+          if ($result !== TRUE){
+            echo '<div class="w3-panel w3-red">'.
+            "<h3>Error: ". $sql . "<br>" . $link->error.
+            "</h3></div>";
+          }
+        }
+        if(!empty($_POST["Direccion"])){
+          $direccionEdit = $_POST["Direccion"];
+          $sql = "UPDATE centro SET Direccion = '{$direccionEdit}' WHERE idCentro = {$idEdit}";
+          $result = $link ->query($sql);
+          if ($result !== TRUE){
+            echo '<div class="w3-panel w3-red">'.
+            "<h3>Error: ". $sql . "<br>" . $link->error.
+            "</h3></div>";
+          }
+        }
+        if(!empty($_POST["Email"])){
+          $emailEdit = $_POST["Email"];
+          $sql = "UPDATE centro SET Email = '{$emailEdit}' WHERE idCentro = {$idEdit}";
+          $result = $link ->query($sql);
+          if ($result !== TRUE){
+            echo '<div class="w3-panel w3-red">'.
+            "<h3>Error: ". $sql . "<br>" . $link->error.
+            "</h3></div>";
+          }
+        }
+        unset($_SESSION["idCentro"]);
+      }else{
+        die("No id seleccionada");
       }
     }
-  //Listar los registros que tiene la tabla persona de la base de datos tercera
-  printRows($link);
+    //Listar los registros que tiene la tabla persona de la base de datos tercera
+    printRows($link);
 
   ?>
   <script>
@@ -168,9 +151,7 @@
         }
       }
     }
-
-  </script>
-  <?php
+    <?php
     function printRows($link){
       $sql = "SELECT * FROM centro";
       $resultQuery = $link->query($sql);
@@ -180,10 +161,33 @@
         while($row = $resultQuery->fetch_assoc()) {
           echo "<li>";  
           echo "Nombre: " . $row["Nombre"].
-          "         | Telefono: " . $row["Telefono"].
-          "         | Direccion: " . $row["Direccion"]." | Email: " . $row["Email"];
+          " | Telefono: " . $row["Telefono"].
+          " | Direccion: " . $row["Direccion"].
+          " | Email: " . $row["Email"];
       }
       echo "</ul>";
+      } else {
+        echo "No hay registros";
+      }
+    }
+    function printSearch($link,$input){
+      $sql = "SELECT * FROM centro WHERE Nombre LIKE '%{$input}%' OR
+              Telefono LIKE '%{$input}%' OR Direccion LIKE '%{$input}%'
+              OR Email LIKE '%{$input}%'";
+      $resultQuery = $link->query($sql);
+      if ($resultQuery->num_rows > 0) {
+        // output data of each row
+        echo '<div class="d-flex justify-content-center" id="searchDiv">
+              <form name="deleteCentro" action="#" method="post"><select name="searchDrop">';
+        while($row = $resultQuery->fetch_assoc()) {
+          echo "<option value ='{$row["idCentro"]}'>";  
+          echo "Nombre: " . $row["Nombre"].
+          "         | Telefono: " . $row["Telefono"].
+          "         | Direccion: " . $row["Direccion"]." | Email: " . $row["Email"]. "</option> ";
+      }
+      echo "</select> 
+            <input class='w3-button w3-red' type='submit' name='DeleteBtnCentro' value='Borrar'>
+            <input class='w3-button w3-khaki' type='submit' name='EditBtnCentro' value='Editar'> </form> </div>";
       } else {
         echo "No hay registros";
       }
@@ -205,7 +209,22 @@
       }
       
     }
-    // $conn->close();
-  ?>  
+    function deleteSelected($link){
+      $selected_id = $_POST["searchDrop"];
+      $sql = "DELETE FROM centro WHERE idCentro ={$selected_id}";
+      $result = $link ->query($sql);
+      if ($result !== TRUE){
+        echo '<div class="w3-panel w3-red">'.
+        "<h3>Error: ". $sql . "<br>" . $link->error.
+        "</h3></div>";
+      }else{
+        echo '<div class="w3-panel w3-red">'.
+        "<h3> Registro borrado con éxito </h3></div>";
+      }
+    }
+    ?>
+
+  </script>
+    
 </div>
 </body>
