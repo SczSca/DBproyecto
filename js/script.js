@@ -17,7 +17,7 @@ function validateForm(idx) {
         let phone = document.forms["updateCentro"]["Telefono"].value;
         let address = document.forms["updateCentro"]["Direccion"].value;
         let email = document.forms["updateCentro"]["Email"].value;
-        if (!!name && !!phone && !!address && !!email) {
+        if (!!name || !!phone || !!address || !!email) {
             return true;
         }else{
             alert("Valor faltante"); 
@@ -36,8 +36,10 @@ function validateForm(idx) {
         let tipo = document.forms["updateSala"]["Tipo"].value;
         let descrip = document.forms["updateSala"]["Descripcion"].value;
         let idCentro = document.forms["updateSala"]["IdCentro"].value;
-        if (!!name && !!tipo && !!descrip && !!idCentro) {
+        if (!!name || !!tipo || !!descrip || !!idCentro) {
           return true;
         }else alert("Valor faltante"); return false;
+    }else if(idx === 4){
+        console.log("PUTISIMA");
     }
 }  
