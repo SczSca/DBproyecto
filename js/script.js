@@ -39,4 +39,5 @@ function validateForm(idx) {
         if (!!name || !!tipo || !!descrip || !!idCentro) {
           return true;
         }else alert("Valor faltante"); return false;
+    }
 }  
