@@ -39,7 +39,4 @@ function validateForm(idx) {
         if (!!name || !!tipo || !!descrip || !!idCentro) {
           return true;
         }else alert("Valor faltante"); return false;
-    }else if(idx === 4){
-        console.log("PUTISIMA");
-    }
 }  
