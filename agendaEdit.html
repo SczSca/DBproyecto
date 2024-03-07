@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8"/>
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<script>
+function validateForm() {
+  let id = document.forms["edit"]["idEdit"].value
+  let name = document.forms["edit"]["nombreEdit"].value;
+  let descript = document.forms["edit"]["descripcionEdit"].value;
+  let cant = document.forms["edit"]["cantidadEdit"].value;
+  let precio = document.forms["edit"]["precioEdit"].value;
+  if (!!name || !!descript || !!cant || !!precio && !!id) {
+    return true;
+  }else alert("Valor faltante"); return false;
+}
+</script>
+<style>
+  .w3-input{
+    padding-bottom: 20px;
+  }
+  .w3-container{
+    width: 100%;
+  }
+</style>
+</head>
+<body>
+<div class="container-fluid">
+  <div class="w3-container w3-blue">
+    <h2>Editar</h2>
+  </div> <br>
+<form name="edit" class="w3-container" action="table.php" onsubmit="return validateForm()" method="post">
+  id: <input class="w3-input" type="text" name="idEdit">
+  <br>
+  Nombre: <input class="w3-input" type="text" name="nombreEdit">
+  <br>
+  Descripción: <input class="w3-input" type="text" name="descripcionEdit" style="padding-bottom:50px ;">
+  <br>
+  Cantidad: <input class="w3-input" type="number" name="cantidadEdit">
+  <br>
+  Precio: <input class="w3-input" type="number" name="precioEdit">
+  <br>
+  <input class="w3-button w3-black" type="submit" value="Enviar">
+  <a class="w3-button w3-black" href="table.php">Ir a base</a>
+</form>
+</div>
+</body>
+</html>
